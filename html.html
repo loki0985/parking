@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Parking Booking</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+</head>
+<style>
+    /* General Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+      background-image: url("park2.jpg"); width: 100vw; height: 100vh; 
+      background-repeat: no-repeat;
+        margin: 50px;
+        padding: 50px;
+    }
+
+    /* Header Styling */
+    header {
+        background: url('https://source.unsplash.com/1600x900/?parking,city') no-repeat center center/cover;
+        color: white;
+        text-align: center;
+        padding: 80px 0;
+        background-size: cover;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 3em;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        animation: slideIn 1s ease-out;
+    }
+
+    header p {
+        font-size: 1.6em;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        animation: fadeIn 2s ease-in-out;
+        margin: 10px 0;
+    }
+
+    .cta-button {
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        padding: 12px 24px;
+        border-radius: 5px;
+        font-size: 1.3em;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        animation: bounceIn 2s;
+    }
+
+    .cta-button:hover {
+        background-color: #45a049;
+    }
+
+    /* Parking Banner Styling */
+    .parking-banner {
+        background: url('https://source.unsplash.com/1600x900/?college,parking') no-repeat center center/cover;
+        padding: 80px 0;
+        text-align: center;
+        color: white;
+        background-size: cover;
+        animation: slideIn 1s ease-out;
+    }
+
+    .while-atcbit-box {
+        background-color: rgba(0, 0, 0, 0.6); 
+        padding: 40px;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    h2.text-uppercase {
+        font-size: 2.5em;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        animation: slideIn 1s ease-out;
+    }
+
+    .to-book-btn .book-now-btn {
+        margin-top: 10px;
+        background-color: #c55151;
+        color: white;
+        font-size: 1.2em;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .to-book-btn .book-now-btn:hover {
+        background-color: #070a07;
+    }
+
+    /* Steps to Follow Section */
+    section {
+        padding: 40px;
+        background-color: white;
+        margin: 20px;
+        border-radius: 8px;
+        animation: fadeIn 2s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+        font-size: 2em;
+        color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    ol {
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin-left: 30px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Footer Styling */
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    footer a {
+        color: #f4f4f4;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: #4CAF50;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes bounceIn {
+        0% {
+            transform: scale(0);
+        }
+        60% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 768px) {
+        header h1 {
+            font-size: 2.2em;
+        }
+
+        section h2 {
+            font-size: 1.6em;
+        }
+
+        .cta-button {
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+
+        .while-atairport-box {
+            padding: 30px;
+        }
+
+        .parking-info {
+            padding: 20px;
+        }
+    }
+</style>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to College Parking Pre-Booking System</h1>
+        <p>Your parking spot is just a few clicks away!</p>
+        <a href="booking.html" class="cta-button">Book Parking Now</a>
+    </header>
+
+    <!-- Parking Banner Section -->
+    <section class="parking-banner">
+        <div class="while-atcbit-box">
+            <h2 class="text-uppercase">Parking @ CBIT College</h2>
+            <p class="parking-description">
+                Book your parking spot in advance at CBIT College parking. 
+                Convenient, secure, and affordable parking options are available!
+            </p>
+            <div class="to-book-btn">
+                <a href="https://cbit.com/book-service" class="book-now-btn">BOOK NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps to Follow Section -->
+    <section id="about">
+        <h2>Steps to Follow</h2>
+        <p>Reserve your parking spot in advance to avoid hassle. Follow these simple steps:</p>
+        <ol>
+            <li>Check for available spots</li>
+            <li>Choose your time and date</li>
+            <li>Fill in your details and make the payment</li>
+            <li>Receive your confirmation and park hassle-free!</li>
+        </ol>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>For inquiries, contact us at: <a href="mailto:contact@cbitparking.com">contact@cbit.com</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Parking Pre-Booking System</h1>
+        <p>Book your parking spot in advance for a hassle-free experience!</p>
+    </header>
+
+    <section id="booking-form">
+        <h2>Book Your Parking Spot</h2>
+        <form action="#" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="vehicle">Vehicle Type:</label>
+            <input type="text" id="vehicle" name="vehicle" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="payment">Card Details:</label>
+            <input type="text" id="payment" name="payment" placeholder="Enter card number" required>
+
+            <button type="submit" class="cta-button">Proceed to Payment</button>
+        </form>
+    </section>
+
+    <section id="payment-confirmation" style="display: none;">
+        <h2>Payment Information</h2>
+        <p>Your payment was successful!</p>
+        <p>Booking Confirmation Number: #12345</p>
+        <p>Thank you for using our parking pre-booking system.</p>
+    </section>
+
+    <footer>
+        <p>For inquiries, contact us at: <a href="mailto:contact@collegeparking.com">contact@collegeparking.com</a></p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('form');
+        const bookingSection = document.getElementById('booking-form');
+        const confirmationSection = document.getElementById('payment-confirmation');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            bookingSection.style.display = 'none';
+            confirmationSection.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

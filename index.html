@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - College Parking</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #940d0d;
+}
+
+header {
+    background-color: #b63737;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.cta-button {
+    background-color: #f4f4f4;
+    color: #4CAF50;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.cta-button:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+footer a {
+    color: #f4f4f4;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+section h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+footer a {
+    color: #f4f4f4;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+#payment-confirmation {
+    text-align: center;
+}
+
+#payment-confirmation p {
+    font-size: 1.2em;
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Section Styling */
+.parking-banner {
+    background: url('https://your-image-url.jpg') no-repeat center center/cover; /* Add an appropriate image URL */
+    padding: 50px 0;
+    text-align: center;
+    color: white;
+}
+
+.while-atairport-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.while-atairport-box {
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+h2.text-uppercase {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.parking-description {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.to-book-btn .book-now-btn {
+    background-color: #c55151;
+    color: white;
+    font-size: 1.2em;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.to-book-btn .book-now-btn:hover {
+    background-color: #070a07;
+}
+
+@media screen and (max-width: 768px) {
+    .while-atairport-box {
+        padding: 30px;
+    }
+
+    h2.text-uppercase {
+        font-size: 2em;
+    }
+
+    .parking-description {
+        font-size: 1em;
+    }
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Section Styling */
+.parking-banner {
+    background: url('https://your-image-url.jpg') no-repeat center center/cover;
+    padding: 50px 0;
+    text-align: center;
+    color: white;
+}
+
+.college-parking-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.college-parking-box {
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 40px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+}
+
+h2.text-uppercase {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.parking-description {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.to-book-btn .book-now-btn {
+    background-color: #4f5a4f;
+    color: white;
+    font-size: 1.2em;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.to-book-btn .book-now-btn:hover {
+    background-color: #5b645b;
+}
+
+/* Parking Info Section */
+.parking-info {
+    background-color: #f8f8f8;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.parking-info h3 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.parking-vehicles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.vehicle-item {
+    background-color: white;
+    border-radius: 8px;
+    width: 220px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.vehicle-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.vehicle-item h4 {
+    font-size: 1.5em;
+    color: #394d3a;
+    margin-bottom: 10px;
+}
+
+.vehicle-item p {
+    font-size: 1em;
+    color: #666;
+}
+
+@media screen and (max-width: 768px) {
+    .vehicle-item {
+        width: 45%;
+    }
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Login Banner Styling */
+.login-banner {
+    background: url('https://your-image-url.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.login-box {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1em;
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.login-btn:hover {
+    background-color: #45a049;
+}
+
+.register-link p {
+    margin-top: 10px;
+    color: white;
+}
+
+.register-link a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .login-box {
+        width: 90%;
+        padding: 30px;
+    }
+}
+
+    </style> <!-- Link to the CSS file -->
+</head>
+<body>
+    <section class="login-banner">
+        <div class="login-box">
+            <h2>Login to College Parking</h2>
+            <form action="/submit-login" method="POST">
+                <div class="input-group">
+                    <label for="username">Username / Email</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="login-btn"><a href="html.html">Login</button>
+                </div>
+                <div class="register-link">
+                    <p>Don't have an account? <a href="register.html">Sign up here</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

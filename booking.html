@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Booking System</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        /* Button Styling */
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #388e3c;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 50px 20px;
+            margin: 20px auto;
+            background-color: white;
+            max-width: 900px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        section h2 {
+            font-size: 2.4em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            font-weight: 500;
+            align-self: flex-start;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: border 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.2em;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        /* Payment Confirmation Section */
+        #payment-confirmation {
+            display: none;
+            padding: 30px;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #payment-confirmation p {
+            font-size: 1.5em;
+            color: #388e3c;
+            margin-bottom: 20px;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        footer a {
+            color: #f4f4f4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #4CAF50;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            section h2 {
+                font-size: 1.8em;
+            }
+
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 1em;
+            }
+
+            input, button {
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Parking Pre-Booking System</h1>
+        <p>Book your parking spot in advance for a hassle-free experience!</p>
+        <a href="#booking-form" class="cta-button">Start Booking</a>
+    </header>
+
+    <!-- Booking Form Section -->
+    <section id="booking-form">
+        <h2>Book Your Parking Spot</h2>
+        <form action="#" method="POST">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="vehicle">Vehicle Type:</label>
+            <input type="text" id="vehicle" name="vehicle" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="payment">Card Details:</label>
+            <input type="text" id="payment" name="payment" placeholder="Enter card number" required>
+
+            <button type="submit" class="cta-button">Proceed to Payment</button>
+        </form>
+    </section>
+
+    <!-- Payment Confirmation Section -->
+    <section id="payment-confirmation">
+        <h2>Payment Successful!</h2>
+        <p>Your payment was successful!</p>
+        <p>Booking Confirmation Number: #12345</p>
+        <p>Thank you for using our parking pre-booking system.</p>
+        <a href="mailto:contact@collegeparking.com" class="cta-button">Contact Us</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>For inquiries, contact us at: <a href="mailto:contact@collegeparking.com">contact@collegeparking.com</a></p>
+    </footer>
+
+    <script>
+        const form = document.querySelector('form');
+        const bookingSection = document.getElementById('booking-form');
+        const confirmationSection = document.getElementById('payment-confirmation');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            bookingSection.style.display = 'none';
+            confirmationSection.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
