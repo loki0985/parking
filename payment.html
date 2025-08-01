@@ -3,57 +3,612 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parking Booking System</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Smart Parking Payment System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('carparking.avif') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Booking Summary */
+        .booking-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .booking-summary h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #4CAF50;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-methods h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        .payment-tabs {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .payment-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .payment-tab.active {
+            border-bottom-color: #4CAF50;
+            color: #4CAF50;
+        }
+
+        .payment-tab:hover {
+            background-color: #f8f9fa;
+        }
+
+        .payment-content {
+            display: none;
+        }
+
+        .payment-content.active {
+            display: block;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Payment Icons */
+        .payment-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+        }
+
+        .payment-icon img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        /* QR Payment */
+        .qr-payment {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: #666;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #6c757d, #5a6268);
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .success-message h2 {
+            color: #28a745;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .success-icon {
+            font-size: 4em;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .card-row {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-tabs {
+                flex-direction: column;
+            }
+
+            .payment-tab {
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Parking Pre-Booking System</h1>
-        <p>Book your parking spot in advance for a hassle-free experience!</p>
-    </header>
+    <!-- Navigation -->
+    <div class="nav-bar">
+        <div class="nav-container">
+            <a href="project.html" class="nav-logo"><i class="fas fa-parking"></i> Smart Parking</a>
+            <div class="nav-links">
+                <a href="project.html"><i class="fas fa-home"></i> Home</a>
+                <a href="booking.html"><i class="fas fa-calendar"></i> Book</a>
+                <a href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+                <a href="loginpage.html"><i class="fas fa-user"></i> Login</a>
+            </div>
+        </div>
+    </div>
 
-    <section id="booking-form">
-        <h2>Book Your Parking Spot</h2>
-        <form action="#" method="POST">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1><i class="fas fa-credit-card"></i> Secure Payment</h1>
+            <p>Complete your parking booking with our secure payment system</p>
+        </header>
 
-            <label for="vehicle">Vehicle Type:</label>
-            <input type="text" id="vehicle" name="vehicle" required>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Booking Summary -->
+            <div class="booking-summary">
+                <h2><i class="fas fa-receipt"></i> Booking Summary</h2>
+                <div class="summary-item">
+                    <span>Parking Spot:</span>
+                    <span>#15 - Lot A</span>
+                </div>
+                <div class="summary-item">
+                    <span>Date:</span>
+                    <span>December 25, 2024</span>
+                </div>
+                <div class="summary-item">
+                    <span>Time:</span>
+                    <span>9:00 AM - 5:00 PM</span>
+                </div>
+                <div class="summary-item">
+                    <span>Vehicle:</span>
+                    <span>Car (ABC-123)</span>
+                </div>
+                <div class="summary-item">
+                    <span>Duration:</span>
+                    <span>8 hours</span>
+                </div>
+                <div class="summary-item">
+                    <span>Rate:</span>
+                    <span>$2.00/hour</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total Amount:</span>
+                    <span>$16.00</span>
+                </div>
+            </div>
 
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
+            <!-- Payment Methods -->
+            <div class="payment-methods">
+                <h2><i class="fas fa-wallet"></i> Payment Methods</h2>
+                
+                <!-- Payment Tabs -->
+                <div class="payment-tabs">
+                    <div class="payment-tab active" data-tab="card">
+                        <i class="fas fa-credit-card"></i> Credit Card
+                    </div>
+                    <div class="payment-tab" data-tab="digital">
+                        <i class="fas fa-mobile-alt"></i> Digital Wallet
+                    </div>
+                    <div class="payment-tab" data-tab="qr">
+                        <i class="fas fa-qrcode"></i> QR Payment
+                    </div>
+                </div>
 
-            <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required>
+                <!-- Credit Card Payment -->
+                <div class="payment-content active" id="card">
+                    <div class="payment-icons">
+                        <div class="payment-icon">
+                            <img src="payment (1).png" alt="Visa">
+                        </div>
+                        <div class="payment-icon">
+                            <img src="money.png" alt="MasterCard">
+                        </div>
+                        <div class="payment-icon">
+                            <img src="cell.png" alt="American Express">
+                        </div>
+                    </div>
 
-            <label for="payment">Card Details:</label>
-            <input type="text" id="payment" name="payment" placeholder="Enter card number" required>
+                    <form id="cardForm">
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        
+                        <div class="card-row">
+                            <div class="form-group">
+                                <label for="cardName">Cardholder Name</label>
+                                <input type="text" id="cardName" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
 
-            <button type="submit" class="cta-button">Proceed to Payment</button>
-        </form>
-    </section>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-lock"></i> Pay $16.00
+                        </button>
+                    </form>
+                </div>
 
-    <section id="payment-confirmation" style="display: none;">
-        <h2>Payment Information</h2>
-        <p>Your payment was successful!</p>
-        <p>Booking Confirmation Number: #12345</p>
-        <p>Thank you for using our parking pre-booking system.</p>
-    </section>
+                <!-- Digital Wallet Payment -->
+                <div class="payment-content" id="digital">
+                    <div class="payment-icons">
+                        <div class="payment-icon">
+                            <img src="money.png" alt="PayPal">
+                        </div>
+                        <div class="payment-icon">
+                            <img src="cell.png" alt="Apple Pay">
+                        </div>
+                        <div class="payment-icon">
+                            <img src="payment (1).png" alt="Google Pay">
+                        </div>
+                    </div>
 
-    <footer>
-        <p>For inquiries, contact us at: <a href="mailto:contact@collegeparking.com">contact@collegeparking.com</a></p>
-    </footer>
+                    <form id="digitalForm">
+                        <div class="form-group">
+                            <label for="walletType">Select Wallet</label>
+                            <select id="walletType" required>
+                                <option value="">Choose your digital wallet</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="apple">Apple Pay</option>
+                                <option value="google">Google Pay</option>
+                                <option value="samsung">Samsung Pay</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="walletEmail">Email/Phone</label>
+                            <input type="text" id="walletEmail" placeholder="Enter your wallet email or phone" required>
+                        </div>
+
+                        <button type="submit" class="btn">
+                            <i class="fas fa-mobile-alt"></i> Pay with Digital Wallet
+                        </button>
+                    </form>
+                </div>
+
+                <!-- QR Payment -->
+                <div class="payment-content" id="qr">
+                    <div class="qr-payment">
+                        <h3><i class="fas fa-qrcode"></i> Scan QR Code to Pay</h3>
+                        <p>Use your mobile banking app to scan the QR code below</p>
+                        
+                        <div class="qr-code">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        
+                        <p><strong>Amount:</strong> $16.00</p>
+                        <p><strong>Reference:</strong> PARK-2024-001</p>
+                        
+                        <button class="btn btn-secondary" onclick="checkQRPayment()">
+                            <i class="fas fa-sync-alt"></i> Check Payment Status
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processing your payment...</p>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Payment Successful!</h2>
+            <p style="font-size: 1.2em; margin-bottom: 20px;">Your parking booking has been confirmed.</p>
+            <p><strong>Transaction ID:</strong> TXN-2024-001</p>
+            <p><strong>Booking ID:</strong> BK-2024-001</p>
+            <p style="margin-top: 30px;">
+                <a href="project.html" class="btn" style="display: inline-block; width: auto; margin-right: 15px;">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="booking.html" class="btn btn-secondary" style="display: inline-block; width: auto;">
+                    <i class="fas fa-calendar"></i> Book Another Spot
+                </a>
+            </p>
+        </div>
+    </div>
 
     <script>
-        const form = document.querySelector('form');
-        const bookingSection = document.getElementById('booking-form');
-        const confirmationSection = document.getElementById('payment-confirmation');
+        // Tab switching
+        document.querySelectorAll('.payment-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.payment-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
 
-        form.addEventListener('submit', (e) => {
+        // Card number formatting
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+
+        // Expiry date formatting
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // CVV formatting
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Form submissions
+        document.getElementById('cardForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            bookingSection.style.display = 'none';
-            confirmationSection.style.display = 'block';
+            processPayment('Credit Card');
+        });
+
+        document.getElementById('digitalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            processPayment('Digital Wallet');
+        });
+
+        function processPayment(method) {
+            // Show loading
+            document.getElementById('loading').style.display = 'block';
+            document.querySelector('.main-content').style.display = 'none';
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }, 3000);
+        }
+
+        function checkQRPayment() {
+            alert('QR payment status: Pending\nPlease complete the payment in your banking app.');
+        }
+
+        // Auto-fill demo data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-fill some demo data for testing
+            document.getElementById('cardNumber').value = '1234 5678 9012 3456';
+            document.getElementById('cardName').value = 'John Doe';
+            document.getElementById('expiry').value = '12/25';
+            document.getElementById('cvv').value = '123';
         });
     </script>
 </body>
